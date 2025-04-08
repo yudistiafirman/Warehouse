@@ -5,4 +5,20 @@ API ini digunakan untuk mengelola data barang di gudang. API ini dilindungi deng
 ## Autentikasi
 
 Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam header `Authorization` dengan format:
-`Authorization: Bearer <token>`
+`Authorization: Bearer <token>` Token diperoleh melalui endpoint `/login`.
+
+## Endpoint
+
+### 1. Login
+
+- **Path**: `/login`
+- **Metode HTTP**: `POST`
+- **Autentikasi**: Tidak diperlukan
+- **Header**: 
+  - `Content-Type: application/json`
+- **Request Body**:
+  ```json
+  {
+    "username": "string",
+    "password": "string"
+  }
