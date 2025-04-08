@@ -178,3 +178,30 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
   - **Status 401 Unauthorized**: Jika token tidak valid atau hilang
   - **Status 404 Not Found**: Jika barang dengan ID tersebut tidak ditemukan
   - **Status 500 Internal Server Error**: Jika terjadi kesalahan server
+
+### 5. Menghapus Barang
+
+- **Path**: `/barang/delete/:id`
+- **Metode HTTP**: `DELETE`
+- **Autentikasi**: Diperlukan (JWT)
+- **Header**: 
+  - `Authorization: Bearer <token>`
+- **Parameter URL**: 
+  - `id: ID barang yang akan diperbarui`
+- **Request Body**: Tidak ada 
+- **Response**:
+  - **Status 200 OK**:
+     ```json
+     {
+        "message": "Barang berhasil dihapus",
+        "id": "integer"
+     }
+  - **Status 401 Unauthorized**: Jika token tidak valid atau hilang
+  - **Status 404 Not Found**: Jika barang dengan ID tersebut tidak ditemukan
+  - **Status 500 Internal Server Error**: Jika terjadi kesalahan server
+
+## Catatan
+- Semua endpoint yang memerlukan autentikasi harus menyertakan token JWT yang valid.
+- Token memiliki masa berlaku 24 jam setelah dibuat melalui endpoint /login.
+- Pastikan data referensial seperti jenis_barang dan satuan sudah ada di database sebelum membuat atau memperbarui barang.
+- Kesalahan seperti stok negatif atau ID referensial yang tidak valid akan menghasilkan respons 400 Bad Request.
