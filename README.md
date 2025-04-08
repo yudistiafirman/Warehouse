@@ -35,7 +35,7 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
      }
   - **Status 400 Bad Request**: Jika format input salah
   - **Status 401 Unauthorized**: Jika username tidak ditemukan atau password salah
-  - Status 500 Internal Server Error: Jika terjadi kesalahan server
+  - **Status 500 Internal Server Error**: Jika terjadi kesalahan server
 
 ### 2. Membuat Barang Baru
 
@@ -86,7 +86,7 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
     }
   - **Status 400 Bad Request**: Jika input tidak valid atau validasi gagal
   - **Status 401 Unauthorized**: Jika token tidak valid atau hilang
-  - Status 500 Internal Server Error: Jika terjadi kesalahan server
+  - **Status 500 Internal Server Error**: Jika terjadi kesalahan server
 
 
  ### 3. Mendapatkan Semua Barang
@@ -122,7 +122,59 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
        },
     ...
       ]
-   }
+    }
   - **Status 401 Unauthorized**: Jika token tidak valid atau hilang
-  - Status 500 Internal Server Error: Jika terjadi kesalahan server
+  - **Status 500 Internal Server Error**: Jika terjadi kesalahan server
 
+
+### 4. Memperbarui Barang
+
+- **Path**: `/barang/update/:id`
+- **Metode HTTP**: `PUT`
+- **Autentikasi**: Diperlukan (JWT)
+- **Header**: 
+  - `Content-Type: application/json`
+  - `Authorization: Bearer <token>`
+- **Parameter URL**: 
+  - `id: ID barang yang akan diperbarui`
+- **Request Body**:
+  ```json
+  {
+    "id_jenis": "integer",
+    "id_satuan": "integer",
+    "nama_barang": "string",
+    "stok": "integer",
+    "stok_minimum": "integer"
+  }
+
+- ```diff
+  - Field-field di atas bersifat opsional. Hanya field yang disertakan yang akan diperbarui.
+  - Jika id_jenis atau id_satuan disertakan, harus valid dan ada di tabel terkait.
+  - stok dan stok_minimum tidak boleh negatif jika disertakan.
+
+- **Response**:
+  - **Status 200 OK**:
+     ```json
+     {
+        "message": "barang berhasil diupdate",
+        "barang": {
+          "idBarang": "integer",
+          "idJenis": "integer",
+          "jenisBarang": {
+            "idJenis": "integer",
+            "namaJenis": "string"
+          },
+        "idSatuan": "integer",
+        "satuan": {
+          "idSatuan": "integer",
+          "namaSatuan": "string"
+        },
+        "namaBarang": "string",
+        "stok": "integer",
+        "stokMinimum": "integer"
+      }
+    }
+  - **Status 400 Bad Request**: Jika input tidak valid atau validasi gagal
+  - **Status 401 Unauthorized**: Jika token tidak valid atau hilang
+  - **Status 404 Not Found**: Jika barang dengan ID tersebut tidak ditemukan
+  - **Status 500 Internal Server Error**: Jika terjadi kesalahan server
