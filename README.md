@@ -27,13 +27,12 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
   password: Kata sandi (wajib)
 - **Response**:
   - **Status 200 OK**:
-   ```json
-   {
-      "token": "string"
-   }
-
- - **Status 400 Bad Request**: Jika format input salah
- - **Status 401 Unauthorized**: Jika username tidak ditemukan atau password salah
- - Status 500 Internal Server Error: Jika terjadi kesalahan server
+     ```json
+     {
+        "token": "string"
+     }
+  - **Status 400 Bad Request**: Jika format input salah
+  - **Status 401 Unauthorized**: Jika username tidak ditemukan atau password salah
+  - Status 500 Internal Server Error: Jika terjadi kesalahan server
  
 
