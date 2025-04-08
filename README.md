@@ -22,3 +22,5 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
     "username": "string",
     "password": "string"
   }
+- :username: Nama pengguna (wajib)
+- :password: Kata sandi (wajib)
