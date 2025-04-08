@@ -37,7 +37,7 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
   - **Status 401 Unauthorized**: Jika username tidak ditemukan atau password salah
   - Status 500 Internal Server Error: Jika terjadi kesalahan server
 
-### 1. Membuat Barang Baru
+### 2. Membuat Barang Baru
 
 - **Path**: `/barang/create`
 - **Metode HTTP**: `POST`
@@ -87,5 +87,42 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
   - **Status 400 Bad Request**: Jika input tidak valid atau validasi gagal
   - **Status 401 Unauthorized**: Jika token tidak valid atau hilang
   - Status 500 Internal Server Error: Jika terjadi kesalahan server
- 
+
+
+ ### 3. Mendapatkan Semua Barang
+
+- **Path**: `/barang/get`
+- **Metode HTTP**: `GET`
+- **Autentikasi**: Diperlukan (JWT)
+- **Header**: 
+  - `Authorization: Bearer <token>`
+- **Request Body**: Tidak Ada
+
+
+- **Response**:
+  - **Status 201 Created**:
+     ```json
+     {
+      "data": [
+        {
+         "idBarang": "integer",
+         "idJenis": "integer",
+         "jenisBarang": {
+           "idJenis": "integer",
+           "namaJenis": "string"
+         },
+         "idSatuan": "integer",
+         "satuan": {
+           "idSatuan": "integer",
+           "namaSatuan": "string"
+         },
+         "namaBarang": "string",
+         "stok": "integer",
+         "stokMinimum": "integer"
+       },
+    ...
+      ]
+   }
+  - **Status 401 Unauthorized**: Jika token tidak valid atau hilang
+  - Status 500 Internal Server Error: Jika terjadi kesalahan server
 
