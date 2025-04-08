@@ -23,5 +23,5 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
     "password": "string"
   }
 ```diff
-- username: Nama pengguna (wajib)
-- password: Kata sandi (wajib)
+username: Nama pengguna (wajib)
+password: Kata sandi (wajib)
