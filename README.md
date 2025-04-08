@@ -100,7 +100,7 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
 
 
 - **Response**:
-  - **Status 201 Created**:
+  - **Status 200 OK**:
      ```json
      {
       "data": [
@@ -187,7 +187,7 @@ Untuk mengakses endpoint yang dilindungi, Anda perlu menyertakan token JWT dalam
 - **Header**: 
   - `Authorization: Bearer <token>`
 - **Parameter URL**: 
-  - `id: ID barang yang akan diperbarui`
+  - `id: ID barang yang akan dihapus`
 - **Request Body**: Tidak ada 
 - **Response**:
   - **Status 200 OK**:
